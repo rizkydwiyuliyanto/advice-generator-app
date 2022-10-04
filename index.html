@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="./style/style.css">
+  <title>Frontend Mentor | Advice generator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="container">
+      <div class="advice" id="adviceid">
+      </div>
+      <div id="content">
+        <p id="advice">
+        </p>
+      </div>
+      <div>
+        <img src="./images/pattern-divider-desktop.svg" width="100%">
+      </div>
+    </div>
+    <div onclick="getSlip()" class="icon">
+      <img src="./images/icon-dice.svg">
+    </div>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+  <script>
+    const getSlip = () => {
+      fetch('https://api.adviceslip.com/advice')
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
+          document.getElementById("adviceid").innerText = `ADVICE #${data.slip.id}`
+          document.getElementById("advice").innerText = `${data.slip.advice}`
+      })
+    }
+    getSlip()
+  </script>
+</body>
+</html>
