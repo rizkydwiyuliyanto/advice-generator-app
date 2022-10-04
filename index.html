@@ -28,7 +28,7 @@
         <img src="./images/pattern-divider-desktop.svg" width="100%">
       </div>
     </div>
-    <div onclick="getSlip()" class="icon">
+    <div onClick="getSlip()" class="icon">
       <img src="./images/icon-dice.svg">
     </div>
   </div>
@@ -38,16 +38,21 @@
     Coded by <a href="#">Your Name Here</a>.
   </div>
   <script>
-    const getSlip = () => {
-      fetch('https://api.adviceslip.com/advice')
-      .then(res => res.json())
-      .then(data => {
-          console.log(data);
-          document.getElementById("adviceid").innerText = `ADVICE #${data.slip.id}`
-          document.getElementById("advice").innerText = `${data.slip.advice}`
-      })
+  const getSlip = () =>{
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      let slips = JSON.parse(this.responseText).slips;
+      let slip = slips[Math.floor(Math.random() * slips.length)]; 
+      let id = slip.id;
+      let advice = slip.advice;
+      console.log(slip)
+      document.getElementById("adviceid").innerText = `ADVICE #${id}`
+      document.getElementById("advice").innerText = `${advice}`
     }
-    getSlip()
+    xhttp.open("GET", "https://api.adviceslip.com/advice/search/person");
+    xhttp.send();
+  }
+  getSlip()
   </script>
 </body>
 </html>
