@@ -25,6 +25,7 @@ body {
     font-family: 'Manrope';
     text-align: center;
     font-size: 28px;
+
 }
 
 .card #adviceid {
@@ -56,6 +57,17 @@ body {
     box-shadow: 0px 0px 30px 0px hsl(150, 100%, 66%);
 }
 
+.text-center {
+    position: absolute;
+    width: 90%;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 32px;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+}
+
 @media screen and (min-width: 1440px) {
     .card {
         width: 1200px;
@@ -75,5 +87,6 @@ body {
     .card {
         height: 300px;
         font-size: 20px;
+        width: 90%;
     }
 }
